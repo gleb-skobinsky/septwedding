@@ -18,16 +18,13 @@ import com.varabyte.kobweb.compose.ui.modifiers.display
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxSize
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.gap
-import com.varabyte.kobweb.compose.ui.modifiers.gridItem
 import com.varabyte.kobweb.compose.ui.modifiers.height
 import com.varabyte.kobweb.compose.ui.modifiers.margin
 import com.varabyte.kobweb.compose.ui.modifiers.maxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.maxWidth
 import com.varabyte.kobweb.compose.ui.modifiers.objectFit
-import com.varabyte.kobweb.compose.ui.modifiers.setVariable
 import com.varabyte.kobweb.compose.ui.modifiers.size
 import com.varabyte.kobweb.compose.ui.modifiers.width
-import com.varabyte.kobweb.compose.ui.toAttrs
 import com.varabyte.kobweb.core.Page
 import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
@@ -37,7 +34,6 @@ import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
 import com.varabyte.kobweb.silk.style.breakpoint.Breakpoint
-import com.varabyte.kobweb.silk.style.toModifier
 import io.skobinsky.septwedding.components.layouts.PageLayoutData
 import io.skobinsky.septwedding.theme.AppColors
 import org.jetbrains.compose.web.css.DisplayStyle
@@ -45,8 +41,6 @@ import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.percent
 import org.jetbrains.compose.web.css.px
 import org.jetbrains.compose.web.css.vh
-import org.jetbrains.compose.web.dom.Br
-import org.jetbrains.compose.web.dom.Div
 
 // Container that has a tagline and grid on desktop, and just the tagline on mobile
 val HeroContainerStyle = CssStyle {
@@ -70,16 +64,6 @@ val HomeGridCellStyle = CssStyle.base {
         .borderRadius(1.cssRem)
 }
 
-@Composable
-private fun GridCell(color: Color, row: Int, column: Int, width: Int? = null, height: Int? = null) {
-    Div(
-        HomeGridCellStyle.toModifier()
-            .setVariable(GridCellColorVar, color)
-            .gridItem(row, column, width, height)
-            .toAttrs()
-    )
-}
-
 
 @InitRoute
 fun initHomePage(ctx: InitRouteContext) {
@@ -97,10 +81,6 @@ inline fun MainColumn(
         content()
     }
 }
-
-private const val Greeting = """Мы рады пригласить вас
-на торжество, посвящённое
-нашему бракосочетанию!"""
 
 @Page
 @Composable

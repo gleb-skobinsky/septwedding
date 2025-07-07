@@ -8,8 +8,6 @@ import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.core.App
 import com.varabyte.kobweb.core.KobwebApp
-import com.varabyte.kobweb.silk.ColorModeAware
-import com.varabyte.kobweb.silk.SilkApp
 import com.varabyte.kobweb.silk.SilkFoundationStyles
 import com.varabyte.kobweb.silk.init.InitSilk
 import com.varabyte.kobweb.silk.init.InitSilkContext
