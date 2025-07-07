@@ -1,0 +1,14 @@
+site:
+  title: "Wedding Olga & Gleb"
+
+server:
+  files:
+    dev:
+      contentRoot: "build/processedResources/js/main/public"
+      script: "build/kotlin-webpack/js/developmentExecutable/septwedding.js"
+      api: "build/libs/septwedding.jar"
+    prod:
+      script: "build/kotlin-webpack/js/productionExecutable/septwedding.js"
+      siteRoot: ".kobweb/site"
+
+  port: 8080
