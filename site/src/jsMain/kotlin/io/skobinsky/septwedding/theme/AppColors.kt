@@ -20,4 +20,6 @@ object AppColors {
         BrandGreenDark,
         BrandBlack
     )
+
+    val GeneralBackground = Color("#fcf6f0")
 }

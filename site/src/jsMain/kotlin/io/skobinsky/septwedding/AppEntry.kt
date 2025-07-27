@@ -6,6 +6,7 @@ import androidx.compose.runtime.getValue
 import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
+import com.varabyte.kobweb.compose.ui.modifiers.backgroundColor
 import com.varabyte.kobweb.compose.ui.modifiers.fillMaxHeight
 import com.varabyte.kobweb.compose.ui.modifiers.scrollBehavior
 import com.varabyte.kobweb.core.App
@@ -17,6 +18,7 @@ import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
+import io.skobinsky.septwedding.theme.AppColors
 import io.skobinsky.septwedding.util.LocalWindowSize
 import io.skobinsky.septwedding.util.getWindowSize
 
@@ -30,7 +32,9 @@ fun initColorMode(ctx: InitSilkContext) {
 @InitSilk
 fun initStyles(ctx: InitSilkContext) {
     ctx.stylesheet.apply {
-        registerStyleBase("html, body") { Modifier.fillMaxHeight() }
+        registerStyleBase("html, body") {
+            Modifier.fillMaxHeight().backgroundColor(AppColors.GeneralBackground)
+        }
         registerStyleBase("body") { Modifier.scrollBehavior(ScrollBehavior.Smooth) }
     }
 }
