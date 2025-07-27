@@ -1,6 +1,8 @@
 package io.skobinsky.septwedding
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
+import androidx.compose.runtime.getValue
 import com.varabyte.kobweb.compose.KobwebComposeStyles
 import com.varabyte.kobweb.compose.css.ScrollBehavior
 import com.varabyte.kobweb.compose.ui.Modifier
@@ -15,6 +17,8 @@ import com.varabyte.kobweb.silk.init.registerStyleBase
 import com.varabyte.kobweb.silk.theme.colors.ColorMode
 import com.varabyte.kobweb.silk.theme.colors.loadFromLocalStorage
 import com.varabyte.kobweb.silk.theme.colors.systemPreference
+import io.skobinsky.septwedding.util.LocalWindowSize
+import io.skobinsky.septwedding.util.getWindowSize
 
 private const val COLOR_MODE_KEY = "septwedding:colorMode"
 
@@ -34,10 +38,15 @@ fun initStyles(ctx: InitSilkContext) {
 @App
 @Composable
 fun AppEntry(content: @Composable () -> Unit) {
-    KobwebApp {
-        KobwebComposeStyles()
-        SilkFoundationStyles()
-        //ColorModeAware()
-        content()
+    val wSize by getWindowSize()
+    CompositionLocalProvider(
+        LocalWindowSize provides wSize
+    ) {
+        KobwebApp {
+            KobwebComposeStyles()
+            SilkFoundationStyles()
+            //ColorModeAware()
+            content()
+        }
     }
 }
