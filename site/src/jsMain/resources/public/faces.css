@@ -7,3 +7,13 @@
   font-family: 'Actinia';
   src: url('/actinia/Actinia-Regular.otf');
 }
+
+@font-face {
+  font-family: 'Baskerville';
+  src: url('/baskerville/Baskerville-Regular.ttf');
+}
+
+@font-face {
+  font-family: 'Berlinerins';
+  src: url('/berlinerins/Berlinerins-Regular.otf');
+}

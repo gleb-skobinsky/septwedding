@@ -14,19 +14,23 @@ import io.skobinsky.septwedding.util.WindowSize
 import org.jetbrains.compose.web.css.cssRem
 import org.jetbrains.compose.web.css.times
 
-fun Modifier.actiniaFont(): Modifier {
-    return this.fontFamily("Actinia")
+object FontFamilies {
+    const val ACTINIA = "Actinia"
+    const val BASKERVILLE = "Baskerville"
+    const val BERLINERINS = "Berlinerins"
 }
 
 @Composable
-fun Modifier.actinia(
+fun Modifier.dynamicFont(
     fontSize: CSSLengthOrPercentageNumericValue = 4.cssRem,
-    lineHeight: CSSLengthOrPercentageNumericValue = 2.5.cssRem
+    lineHeight: CSSLengthOrPercentageNumericValue = 2.5.cssRem,
+    textAlign: TextAlign = TextAlign.Center,
+    fontFamily: String = FontFamilies.BASKERVILLE,
 ): Modifier {
     val windowSize = LocalWindowSize.current
     return this
-        .actiniaFont()
-        .textAlign(TextAlign.Center)
+        .fontFamily(fontFamily)
+        .textAlign(textAlign)
         .fontSize(fontSize * windowSize.getFontRatio())
         .lineHeight(lineHeight * windowSize.getFontRatio())
 }
