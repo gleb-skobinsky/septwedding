@@ -7,7 +7,7 @@ import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.ColumnScope
 import com.varabyte.kobweb.compose.ui.Alignment
 import com.varabyte.kobweb.compose.ui.Modifier
-import com.varabyte.kobweb.compose.ui.modifiers.margin
+import com.varabyte.kobweb.compose.ui.modifiers.padding
 import com.varabyte.kobweb.compose.ui.modifiers.width
 import io.skobinsky.septwedding.util.ColumnMaxWidth
 import org.jetbrains.compose.web.css.percent
@@ -20,7 +20,7 @@ inline fun MainColumn(
     Column(
         modifier = Modifier
             .width(calc { min(ColumnMaxWidth, 100.percent) })
-            .margin(left = 24.px, right = 24.px),
+            .padding(left = 24.px, right = 24.px),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         content()

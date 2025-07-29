@@ -1,6 +1,7 @@
 package io.skobinsky.septwedding.components
 
 import androidx.compose.runtime.Composable
+import com.varabyte.kobweb.compose.css.TextAlign
 import com.varabyte.kobweb.compose.foundation.layout.Box
 import com.varabyte.kobweb.compose.foundation.layout.Column
 import com.varabyte.kobweb.compose.foundation.layout.Row
@@ -41,7 +42,8 @@ fun TableRow(
                         .dynamicFont(
                             fontSize = 2.5.cssRem,
                             lineHeight = 3.cssRem,
-                            fontFamily = FontFamilies.BASKERVILLE
+                            fontFamily = FontFamilies.BASKERVILLE,
+                            textAlign = TextAlign.Start
                         )
                 )
             }
@@ -52,7 +54,8 @@ fun TableRow(
                         .dynamicFont(
                             fontSize = 3.cssRem,
                             lineHeight = 3.5.cssRem,
-                            fontFamily = FontFamilies.BASKERVILLE
+                            fontFamily = FontFamilies.BASKERVILLE,
+                            textAlign = TextAlign.Start
                         )
                 )
             }
