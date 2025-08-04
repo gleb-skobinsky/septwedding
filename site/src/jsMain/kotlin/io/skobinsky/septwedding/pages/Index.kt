@@ -37,6 +37,7 @@ import com.varabyte.kobweb.core.data.add
 import com.varabyte.kobweb.core.init.InitRoute
 import com.varabyte.kobweb.core.init.InitRouteContext
 import com.varabyte.kobweb.silk.components.graphics.Image
+import com.varabyte.kobweb.silk.components.navigation.Link
 import com.varabyte.kobweb.silk.components.text.SpanText
 import com.varabyte.kobweb.silk.style.CssStyle
 import com.varabyte.kobweb.silk.style.base
@@ -49,7 +50,6 @@ import io.skobinsky.septwedding.icons.CakeIcon
 import io.skobinsky.septwedding.icons.Dinner
 import io.skobinsky.septwedding.icons.FinishIcon
 import io.skobinsky.septwedding.icons.GuestsGathering
-import io.skobinsky.septwedding.icons.Ring
 import io.skobinsky.septwedding.icons.StartBranch
 import io.skobinsky.septwedding.theme.AppColors
 import io.skobinsky.septwedding.util.COLUMN_MAX_WIDTH
@@ -95,6 +95,9 @@ val HomeGridCellStyle = CssStyle.base {
 fun initHomePage(ctx: InitRouteContext) {
     ctx.data.add(PageLayoutData("Home"))
 }
+
+private const val TelegramLink = "https://t.me/+chyjjdkxppg3Yzcy"
+private const val NeZaGoramiLink = "https://yandex.ru/maps/-/CHTt5RM5"
 
 @Page
 @Composable
@@ -206,16 +209,8 @@ fun HomePage() {
                     leadingContent = {
                         GuestsGathering()
                     },
-                    title = "16:00",
+                    title = "17:00",
                     subtitle = "Сбор гостей"
-                )
-                TimelineRow()
-                TableRow(
-                    leadingContent = {
-                        Ring()
-                    },
-                    title = "16:30",
-                    subtitle = "Церемония"
                 )
                 TimelineRow()
                 TableRow(
@@ -297,13 +292,38 @@ fun HomePage() {
                 }
             }
             SpanText(
+                text = "СЛОВО-ТАБУ",
+                modifier = Modifier
+                    .margin(top = 48.px)
+                    .dynamicFont(4.cssRem, 4.cssRem)
+            )
+            SpanText(
+                text = "Убедительно просим не использовать слово «Горько» на протяжении всей свадьбы.",
+                modifier = Modifier
+                    .margin(top = 24.px)
+                    .dynamicFont(
+                        fontSize = 2.5.cssRem,
+                        lineHeight = 3.cssRem,
+                        fontFamily = FontFamilies.BASKERVILLE
+                    )
+            )
+            SpanText(
+                text = "Спасибо за понимание",
+                modifier = Modifier
+                    .margin(top = 24.px)
+                    .dynamicFont(
+                        fontSize = 4.cssRem,
+                        fontFamily = FontFamilies.BERLINERINS
+                    )
+            )
+            SpanText(
                 text = "МЕСТО ПРОВЕДЕНИЯ",
                 modifier = Modifier
                     .margin(top = 48.px)
                     .dynamicFont(4.cssRem, 4.cssRem)
             )
             SpanText(
-                text = "Наша свадьба будет проходить в ресторане \"НеЗаГорами\" по адресу Марксистская улица, 7",
+                text = "Наша свадьба будет проходить в ресторане «NEзаGORAMI» по адресу Марксистская улица, 7",
                 modifier = Modifier
                     .margin(top = 24.px)
                     .dynamicFont(
@@ -324,7 +344,7 @@ fun HomePage() {
                     .margin(top = 36.px, bottom = 36.px)
                     .onClick {
                         window.open(
-                            url = "https://yandex.ru/maps/-/CHTt5RM5",
+                            url = NeZaGoramiLink,
                             target = "_blank"
                         )
                     }
@@ -348,22 +368,41 @@ fun HomePage() {
         }
         Box {
             val currentWinWidth = LocalWindowSize.current.width
-            SpanText(
-                text = "Пожалуйста, подтвердите свое присутствие до 5 сентября 2025, чтобы мы могли правильно организовать мероприятие.",
-                modifier = Modifier
-                    .margin(
-                        top = 24.px,
-                        left = calculateLeft(currentWinWidth),
-                        right = 24.px
-                    )
-                    .fillMaxWidth(35.percent)
-                    .dynamicFont(
-                        fontSize = 3.cssRem,
-                        lineHeight = 3.5.cssRem,
-                        fontFamily = FontFamilies.BASKERVILLE,
-                        textAlign = TextAlign.Start
-                    )
-            )
+            val leftMargin = calculateLeft(currentWinWidth)
+            Column {
+                SpanText(
+                    text = "Пожалуйста, подтвердите свое присутствие, вступив ",
+                    modifier = Modifier
+                        .margin(
+                            top = 24.px,
+                            left = leftMargin,
+                            right = 24.px
+                        )
+                        .fillMaxWidth(35.percent)
+                        .dynamicFont(
+                            fontSize = 3.cssRem,
+                            lineHeight = 3.5.cssRem,
+                            fontFamily = FontFamilies.BASKERVILLE,
+                            textAlign = TextAlign.Start
+                        )
+                )
+                Link(
+                    path = TelegramLink,
+                    modifier = Modifier
+                        .margin(
+                            left = leftMargin,
+                            right = 24.px
+                        )
+                        .fillMaxWidth(35.percent)
+                        .dynamicFont(
+                            fontSize = 3.cssRem,
+                            lineHeight = 3.5.cssRem,
+                            fontFamily = FontFamilies.BASKERVILLE,
+                            textAlign = TextAlign.Start
+                        ),
+                    text = "в наш чат Telegram."
+                )
+            }
             RightLeafs(Modifier.align(Alignment.CenterEnd))
         }
         MainColumn {
@@ -441,7 +480,7 @@ private fun BlockImage(
         description = description,
         modifier = modifier
             .width(calc { min(100.percent, ColumnMaxWidth) })
-            .maxHeight(500.px)
+            .maxHeight(700.px)
             .objectFit(ObjectFit.Cover)
             .display(DisplayStyle.Block)
     )
